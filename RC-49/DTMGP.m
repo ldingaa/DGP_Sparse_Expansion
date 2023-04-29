@@ -2,17 +2,17 @@
 clear all; close all; clc;
 %% DTMGP
 %% Load Data
-load images_gray.mat
+load data
 %images=h5read('RC-49_64x64.h5','/images');
-labels=h5read('RC-49_64x64.h5','/labels');
-ind_train=h5read('RC-49_64x64.h5','/indx_train');
-trainX = preprocess(images_gray(:,:,ind_train)); 
-trainY = labels(ind_train);
+%labels=h5read('RC-49_64x64.h5','/labels');
+%ind_train=h5read('RC-49_64x64.h5','/indx_train');
+trainX = preprocess(images); 
+trainY = labels;
 %testX = preprocess(imgs(:,:,1:4000:36001)); 
 ind_test =[27656       32921        3634       74117];
 testY=[40 80 120 160 200 240 280 320 360]';
-realX=preprocess(images_gray(:,:,ind_test));
-realX=reshape(realX,[64 64 4]);
+realX=preprocess(testX);
+%realX=reshape(realX,[64 64 4]);
 %% Settings
 settings.latent_dim = 100;
 %settings.num_labels = 10;
